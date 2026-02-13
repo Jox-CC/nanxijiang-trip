@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>楠溪江绍兴之旅</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'SF Pro Display',sans-serif;background:#000;color:#fff}
+.section{min-height:100vh;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:center;position:relative}
+.section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:1}
+.content{position:relative;z-index:2;max-width:800px;padding:50px 25px;width:100%}
+h1{font-size:clamp(2.5rem,6vw,4rem);margin-bottom:15px;text-align:center;background:linear-gradient(135deg,#fff,#c9a227);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:10px}
+h3{font-size:1.2rem;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.subtitle{text-align:center;font-size:1.1rem;opacity:0.8}
+.info{text-align:center;font-size:0.95rem;opacity:0.6;margin-top:10px}
+.timeline{padding-left:50px;margin-top:40px;position:relative}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:#c9a227}
+.item{margin-bottom:22px;padding-left:25px;position:relative}
+.item::before{content:'';position:absolute;left:-12px;top:8px;width:10px;height:10px;background:#c9a227;border-radius:50%}
+.time{color:#c9a227;font-weight:bold;margin-bottom:6px;font-size:0.9rem}
+.card{background:rgba(255,255,255,0.1);padding:18px;border-radius:12px;cursor:pointer;transition:0.3s}
+.card:hover{background:rgba(255,255,255,0.15);transform:translateX(8px)}
+.card p{font-size:0.9rem;opacity:0.7}
+.spot{color:#c9a227;cursor:pointer}
+.spot:hover{text-decoration:underline}
+.modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:1000;align-items:center;justify-content:center}
+.modal.show{display:flex}
+.modal-content{max-width:700px;width:90%;background:#1a1a1a;border-radius:15px;overflow:hidden;margin:20px}
+.modal-img{width:100%;height:280px;object-fit:cover}
+.modal-body{padding:25px}
+.modal-close{position:absolute;top:15px;right:15px;background:rgba(255,255,255,0.2);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:1.5rem;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:40px}
+.stat{text-align:center;padding:20px;background:rgba(255,255,255,0.08);border-radius:12px}
+.stat-val{font-size:2rem;color:#c9a227;font-weight:bold}
+.stat-label{font-size:0.8rem;opacity:0.6;margin-top:5px}
+.nav{position:fixed;top:0;left:0;right:0;padding:12px 20px;display:flex;gap:20px;background:rgba(0,0,0,0.7);z-index:100;backdrop-filter:blur(10px)}
+.nav a{color:#fff;text-decoration:none;font-size:0.9rem;opacity:0.7}
+.nav a.active{opacity:1;color:#c9a227}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;cursor:pointer}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+.scroll-hint span{font-size:0.8rem;opacity:0.6}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="#hero" class="active">首页</a><a href="#day1">Day1</a><a href="#day2">Day2</a><a href="#day3">Day3</a><a href="#day4">Day4</a></nav>
+
+<section class="section" id="hero" style="background:linear-gradient(135deg,#1a2e1f,#2d5a3d)">
+<div class="content">
+<h1>🏔️ 楠溪江 · 绍兴</h1>
+<p class="subtitle">2026 春节自驾游</p>
+<p class="info">2月17日-20日 · 4天3晚 · 约862公里</p>
+<div class="scroll-hint" onclick="document.getElementById('day1').scrollIntoView({behavior:'smooth'})"><span>向下滚动</span></div>
+</div>
+</section>
+
+<section class="section" id="day1" style="background-image:url('https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=1920')">
+<div class="content">
+<h2>Day 01 出发日 · 抵达楠溪江</h2>
+<p class="info">2月17日（初一）</p>
+<div class="timeline">
+<div class="item"><div class="time">08:30</div><div class="card"><h3><i class="fas fa-car"></i> 昆山自驾出发</h3><p>全程426公里</p></div></div>
+<div class="item"><div class="time">12:00</div><div class="card"><h3><i class="fas fa-utensils"></i> 途中午餐</h3><p>服务区用餐</p></div></div>
+<div class="item"><div class="time">15:00</div><div class="card" onclick="show('yue')"><h3><i class="fas fa-home"></i> 抵达悦南兮民宿</h3></div></div>
+<div class="item"><div class="time">15:30</div><div class="card" onclick="show('furong')"><h3><i class="fas fa-village"></i> <span class="spot">芙蓉古村</span></h3></div></div>
+<div class="item"><div class="time">17:00</div><div class="card" onclick="show('cangpo')"><h3><i class="fas fa-landmark"></i> <span class="spot">苍坡古村</span></h3></div></div>
+<div class="item"><div class="time">18:00</div><div class="card" onclick="show('lishui')"><h3><i class="fas fa-street-view"></i> <span class="spot">丽水古街</span></h3></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="day2" style="background-image:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920')">
+<div class="content">
+<h2>Day 02 探索日 · 石桅岩 & 龙湾潭</h2>
+<p class="info">2月18日（初二）</p>
+<div class="timeline">
+<div class="item"><div class="time">08:00</div><div class="card"><h3><i class="fas fa-coffee"></i> 民宿早餐</h3></div></div>
+<div class="item"><div class="time">09:00</div><div class="card" onclick="show('shiweiyán')"><h3><i class="fas fa-mountain"></i> <span class="spot">石桅岩景区</span></h3></div></div>
+<div class="item"><div class="time">12:00</div><div class="card"><h3><i class="fas fa-utensils"></i> 景区午餐</h3></div></div>
+<div class="item"><div class="time">14:30</div><div class="card" onclick="show('longwantan')"><h3><i class="fas fa-tree"></i> <span class="spot">龙湾潭森林公园</span></h3></div></div>
+<div class="item"><div class="time">17:00</div><div class="card" onclick="show('yai')"><h3><i class="fas fa-bed"></i> 入住崖下迷野民宿</h3></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="day3" style="background-image:url('https://images.unsplash.com/photo-1533089862017-54148d31ca76?w=1920')">
+<div class="content">
+<h2>Day 03 穿越日 · 崖下库 → 绍兴</h2>
+<p class="info">2月19日（初三）</p>
+<div class="timeline">
+<div class="item"><div class="time">08:00</div><div class="card" onclick="show('yaixiaku')"><h3><i class="fas fa-cliff"></i> <span class="spot">崖下库景区</span></h3></div></div>
+<div class="item"><div class="time">12:30</div><div class="card"><h3><i class="fas fa-road"></i> 出发前往绍兴</h3><p>245公里</p></div></div>
+<div class="item"><div class="time">15:30</div><div class="card" onclick="show('quanji')"><h3><i class="fas fa-building"></i> 抵达全季酒店</h3></div></div>
+<div class="item"><div class="time">16:00</div><div class="card" onclick="show('cangqiao')"><h3><i class="fas fa-walking"></i> <span class="spot">仓桥直街</span></h3></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="day4" style="background-image:url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920')">
+<div class="content">
+<h2>Day 04 文化日 · 绍兴city walk</h2>
+<p class="info">2月20日（初四）</p>
+<div class="timeline">
+<div class="item"><div class="time">09:00</div><div class="card" onclick="show('shusheng')"><h3><i class="fas fa-book"></i> <span class="spot">书圣故里</span></h3></div></div>
+<div class="item"><div class="time">10:30</div><div class="card" onclick="show('zhouenlai')"><h3><i class="fas fa-user-tie"></i> <span class="spot">周恩来祖居</span></h3></div></div>
+<div class="item"><div class="time">11:30</div><div class="card" onclick="show('baziqiao')"><h3><i class="fas fa-bridge"></i> <span class="spot">八字桥</span></h3></div></div>
+<div class="item"><div class="time">14:00</div><div class="card" onclick="show('luxun')"><h3><i class="fas fa-feather-alt"></i> <span class="spot">鲁迅故里</span></h3></div></div>
+<div class="item"><div class="time">15:30</div><div class="card" onclick="show('xuwei')"><h3><i class="fas fa-palette"></i> <span class="spot">徐渭故里</span></h3></div></div>
+<div class="item"><div class="time">17:00</div><div class="card"><h3><i class="fas fa-car"></i> 返程昆山</h3><p>191公里</p></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="footer" style="background:#0a0a0a;min-height:60vh">
+<div class="content">
+<h1>旅途愉快！</h1>
+<p class="subtitle">2026年春节 · 楠溪江绍兴自驾游</p>
+<div class="stats">
+<div class="stat"><div class="stat-val">4</div><div class="stat-label">天数</div></div>
+<div class="stat"><div class="stat-val">13+</div><div class="stat-label">景点</div></div>
+<div class="stat"><div class="stat-val">3</div><div class="stat-label">住宿</div></div>
+<div class="stat"><div class="stat-val">862</div><div class="stat-label">总路程km</div></div>
+</div>
+</div>
+</section>
+
+<div class="modal" id="modal" onclick="close(event)">
+<button class="modal-close" onclick="close(event)">×</button>
+<div class="modal-content"><img class="modal-img" id="m-img" src=""><div class="modal-body"><h2 id="m-title"></h2><p id="m-desc"></p></div></div>
+</div>
+
+<script>
+const data={furong:{name:'芙蓉古村',img:'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=800',desc:'芙蓉古村始建于唐代末年，是楠溪江保存最完整的古村落之一。村内保留着大量明清时期的古建筑。'},
+cangpo:{name:'苍坡古村',img:'https://images.unsplash.com/photo-1513977075980-98d2d7efe8b2?w=800',desc:'苍坡古村以独特的"文房四宝"布局而闻名。整个村落按照笔、墨、纸、砚的形状规划。'},
+lishui:{name:'丽水古街',img:'https://images.unsplash.com/photo-1533089862017-54148d31ca76?w=800',desc:'丽水古街串联芙蓉古村，是一条保存完好的明清商业街。'},
+shiweiyán:{name:'石桅岩景区',img:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800',desc:'石桅岩是楠溪江的标志性景观，因形似船桅而得名，被誉为"浙南天柱"。'},
+longwantan:{name:'龙湾潭森林公园',img:'https://images.unsplash.com/photo-1448375240586-dfd8f3f72597?w=800',desc:'龙湾潭国家森林公园森林覆盖率高达97%，内有多个壮观瀑布群。'},
+yai:{name:'崖下迷野民宿',img:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',desc:'崖下迷野民宿位于崖下库景区附近，泳池观景房让您尽情欣赏山间风光。'},
+yaixiaku:{name:'崖下库景区',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800',desc:'崖下库以险峻的峡谷和清澈的溪流著称。景区内悬崖峭壁、怪石嶙峋。'},
+quanji:{name:'全季酒店',img:'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800',desc:'全季酒店位于绍兴核心景区，步行即可到达鲁迅故里。'},
+cangqiao:{name:'仓桥直街',img:'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800',desc:'仓桥直街是绍兴最具水乡特色的老街，青石板路，白墙黛瓦。'},
+shusheng:{name:'书圣故里',img:'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=800',desc:'书圣故里是王羲之的故居所在地，这里保存着墨池、题扇桥等历史遗迹。'},
+zhouenlai:{name:'周恩来祖居',img:'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800',desc:'周恩来祖居是具有明清建筑风格的古民居，现为爱国主义教育基地。'},
+baziqiao:{name:'八字桥',img:'https://images.unsplash.com/photo-1513977075980-98d2d7efe8b2?w=800',desc:'八字桥建于南宋时期，因形状酷似"八"字而得名，是绍兴最古老的石桥之一。'},
+luxun:{name:'鲁迅故里',img:'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800',desc:'鲁迅故里是文学巨匠鲁迅童年和青少年时期生活的地方。'},
+xuwei:{name:'徐渭故里 & 艺术馆',img:'https://images.unsplash.com/photo-1579783902614-a3fb39279c0f?w=800',desc:'徐渭是明代著名的文学艺术家，青藤书屋是他的故居。'},
+yue:{name:'悦南兮民宿',img:'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',desc:'悦南兮民宿位于楠溪江畔，是一家充满诗意的精品民宿。'}
+};
+function show(id){const d=data[id];if(d){document.getElementById('m-img').src=d.img;document.getElementById('m-title').innerText=d.name;document.getElementById('m-desc').innerText=d.desc;document.getElementById('modal').classList.add('show');document.body.style.overflow='hidden'}}
+function close(e){if(e.target.id==='modal'||e.target.classList.contains('modal-close')){document.getElementById('modal').classList.remove('show');document.body.style.overflow=''}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close(e)});
+</script>
+</body>
+</html>
