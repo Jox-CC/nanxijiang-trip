@@ -1,0 +1,142 @@
+
+            'yai': {
+                name: '崖下迷野民宿',
+                image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80',
+                desc: '崖下迷野民宿位于崖下库景区附近，推窗即见壮丽山景。民宿设计融合了现代与自然元素，泳池观景房让您尽情欣赏山间风光，是放松身心的理想之选。',
+                tags: ['🏡 精品民宿', '🏊 泳池', '🌄 山景']
+            },
+            'yaixiaku': {
+                name: '崖下库景区',
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80',
+                desc: '崖下库以险峻的峡谷和清澈的溪流著称。景区内悬崖峭壁、怪石嶙峋，最窄处仅容一人通过。徒步其中，既能挑战自我，又能欣赏到大自然的鬼斧神工。',
+                tags: ['🏞️ 峡谷', '🚶 徒步', '⛰️ 悬崖']
+            },
+            'quanji': {
+                name: '全季酒店（绍兴鲁迅故里店）',
+                image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&q=80',
+                desc: '全季酒店位于绍兴核心景区，步行即可到达鲁迅故里。酒店秉承"自然、适度、自在"的理念，为您提供舒适温馨的住宿体验。',
+                tags: ['🏨 品牌酒店', '📍 交通便利', '🛏️ 舒适']
+            },
+            'cangqiao': {
+                name: '仓桥直街',
+                image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80',
+                desc: '仓桥直街是绍兴最具水乡特色的老街之一，青石板路、白墙黛瓦、小桥流水，尽显江南水乡风情。街道两旁保留着众多老字号店铺，可以品尝到正宗的绍兴美食。',
+                tags: ['🌉 水乡古街', '🏮 夜景', '🍜 美食']
+            },
+            'shusheng': {
+                name: '书圣故里',
+                image: 'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=1200&q=80',
+                desc: '书圣故里是王羲之的故居所在地，这里保存着墨池、题扇桥等历史遗迹。漫步其间，可以感受到深厚的书法文化底蕴，是书法爱好者的朝圣之地。',
+                tags: ['📜 书法文化', '🏛️ 历史街区', '🖌️ 墨池']
+            },
+            'zhouenlai': {
+                name: '周恩来祖居',
+                image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+                desc: '周恩来祖居是一座具有明清建筑风格的古民居，现已成为爱国主义教育基地。在这里，您可以了解这位伟大革命家的人生轨迹，感受他"为中华之崛起而读书"的宏伟志向。',
+                tags: ['🏛️ 名人故居', '📜 红色旅游', '🏮 历史']
+            },
+            'baziqiao': {
+                name: '八字桥',
+                image: 'https://images.unsplash.com/photo-1513977075980-98d2d7efe8b2?w=1200&q=80',
+                desc: '八字桥建于南宋时期，因形状酷似"八"字而得名，是绍兴最古老的石桥之一。桥身由青石砌成，历经千年风雨依然屹立，见证了绍兴的历史变迁。',
+                tags: ['🌉 古桥', '🏮 历史遗迹', '📸 打卡']
+            },
+            'luxun': {
+                name: '鲁迅故里',
+                image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80',
+                desc: '鲁迅故里是文学巨匠鲁迅童年和青少年时期生活的地方，包括百草园、三味书屋、鲁迅故居等多个景点。漫步其间，可以重温《从百草园到三味书屋》中的美好回忆。',
+                tags: ['📖 文学故里', '🏮 5A景区', '📚 百草园']
+            },
+            'xuwei': {
+                name: '徐渭故里 & 徐渭艺术馆',
+                image: 'https://images.unsplash.com/photo-1579783902614-a3fb39279c0f?w=1200&q=80',
+                desc: '徐渭是明代著名的文学艺术家，青藤书屋是他的故居。2020年新建的徐渭艺术馆展示了徐渭的生平和艺术成就，包括他的书画作品、文学作品等，是了解明代艺术的重要窗口。',
+                tags: ['🎨 艺术馆', '📚 明清文化', '🖌️ 徐渭']
+            },
+            'yue': {
+                name: '悦南兮民宿',
+                image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80',
+                desc: '悦南兮民宿位于楠溪江畔，是一家充满诗意的精品民宿。民宿保留了当地传统建筑风貌，同时融入现代舒适元素，让您在古朴中感受温馨。',
+                tags: ['🏡 精品民宿', '🌿 田园风光', '🍵 品茶']
+            }
+        };
+
+        // 显示景点弹窗
+        function showSpot(spotId) {
+            const spot = spots[spotId];
+            if (!spot) return;
+
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDesc');
+            const modalTags = document.getElementById('modalTags');
+
+            modalImage.src = spot.image;
+            modalImage.alt = spot.name;
+            modalTitle.textContent = spot.name;
+            modalDesc.textContent = spot.desc;
+            modalTags.innerHTML = spot.tags.map(tag => `<span class="modal-tag">${tag}</span>`).join('');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭弹窗
+        function closeModal(event) {
+            if (event.target === event.currentTarget || event.target.closest('.modal-close')) {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ESC键关闭弹窗
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // 导航点击
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = dot.dataset.target;
+                document.getElementById(targetId).scrollIntoView({behavior: 'smooth'});
+            });
+        });
+
+        // 滚动监听
+        const sections = document.querySelectorAll('.hero, .day-section, .footer-summary');
+        const dots = document.querySelectorAll('.nav-dot');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    dots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.dataset.target === id) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, {threshold: 0.5});
+
+        sections.forEach(section => observer.observe(section));
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const navFixed = document.getElementById('navFixed');
+            if (window.scrollY > 100) {
+                navFixed.classList.add('scrolled');
+            } else {
+                navFixed.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
