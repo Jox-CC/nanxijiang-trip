@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏔️ 楠溪江 · 绍兴之旅 | 2026春节</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'SF Pro Display', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1a2e1f 0%, #2d5a3d 50%, #1a3a2a 100%);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(201, 162, 39, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: heroFadeIn 1.5s ease-out;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #c9a227 50%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 50px;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator span {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Day Sections */
+        .day-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .day-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, 
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .day-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, transparent 0%, #000 100%);
+            z-index: 2;
+        }
+
+        .day-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1200px;
+            padding: 60px 30px;
+        }
+
+        .day-header {
+            margin-bottom: 60px;
+        }
+
+        .day-number {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #c9a227;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 10px;
+        }
+
+        .day-title {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .day-date {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, 
+                transparent 0%,
+                rgba(201, 162, 39, 0.5) 20%,
+                rgba(201, 162, 39, 0.8) 50%,
+                rgba(201, 162, 39, 0.5) 80%,
+                transparent 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: timelineFadeIn 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+        .timeline-item:nth-child(5) { animation-delay: 1s; }
+        .timeline-item:nth-child(6) { animation-delay: 1.2s; }
+
+        @keyframes timelineFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #c9a227;
+            border-radius: 50%;
+            border: 3px solid #000;
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.5);
+        }
+
+        .timeline-time {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #c9a227;
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .timeline-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 25px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
+        .timeline-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .timeline-card h3 i {
+            font-size: 1.2rem;
+            color: #c9a227;
+        }
+
+        .timeline-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #c9a227;
+            border-color: #c9a227;
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+
+        .progress-dot:hover {
+            transform: scale(1.3);
+            background: rgba(201, 162, 39, 0.5);
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-bar.visible {
+            transform: translateY(0);
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #c9a227;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            padding: 100px 30px 60px;
+            text-align: center;
+            background: #000;
+        }
+
+        .footer h2 {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #c9a227 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 40px;
+        }
+
+        .footer-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'SF Pro Display', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c9a227;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Background Images - 使用渐变占位，实际使用时替换为真实图片URL */
+        .day-1-bg {
+            background-image: linear-gradient(135deg, #2d5a3d 0%, #1a2e1f 50%, #0f1f14 100%);
+        }
+
+        .day-2-bg {
+            background-image: linear-gradient(135deg, #3d5a4d 0%, #2d4a3d 50%, #1a3a2e 100%);
+        }
+
+        .day-3-bg {
+            background-image: linear-gradient(135deg, #4a5a4d 0%, #3a4a3d 50%, #2a3a2e 100%);
+        }
+
+        .day-4-bg {
+            background-image: linear-gradient(135deg, #5a4a3d 0%, #4a3a2d 50%, #3a2a1e 100%);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 50px;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item::before {
+                left: -18px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .timeline-card {
+                padding: 20px;
+            }
+
+            .progress-indicator {
+                right: 15px;
+            }
+
+            .nav-bar {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar" id="navBar">
+        <div class="nav-logo">🏔️ 楠溪江 · 绍兴</div>
+        <div class="nav-links">
+            <a href="#hero">首页</a>
+            <a href="#day1">Day 1</a>
+            <a href="#day2">Day 2</a>
+            <a href="#day3">Day 3</a>
+            <a href="#day4">Day 4</a>
+            <a href="#footer">总结</a>
+        </div>
+    </nav>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-dot active" data-target="hero"></div>
+        <div class="progress-dot" data-target="day1"></div>
+        <div class="progress-dot" data-target="day2"></div>
+        <div class="progress-dot" data-target="day3"></div>
+        <div class="progress-dot" data-target="day4"></div>
+        <div class="progress-dot" data-target="footer"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>🏔️ 楠溪江 · 绍兴</h1>
+            <p class="subtitle">2026 春节自驾游 · 探索江南之美</p>
+            <p style="font-size: 1rem; color: rgba(255,255,255,0.6); margin-top: 20px;">
+                2月17日 - 2月20日 · 4天3晚 · 约862公里
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <span>向下滚动</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Day 1 -->
+    <section class="day-section day-1-bg" id="day1">
+        <div class="day-content">
+            <div class="day-header">
+                <div class="day-number">Day 01</div>
+                <h2 class="day-title">出发日 · 抵达楠溪江</h2>
+                <p class="day-date">2月17日（初一）</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">08:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-car"></i> 昆山自驾出发</h3>
+                        <p>全程426公里，开启美好旅程</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-utensils"></i> 途中午餐</h3>
+                        <p>服务区或沿途小镇用餐</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">15:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-home"></i> 抵达悦南兮民宿</h3>
+                        <p>办理入住，稍作休息</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">15:30 - 18:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-walking"></i> 游览古村落</h3>
+                        <p>芙蓉古村 → 苍坡古村 → 丽水古街</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">19:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-tree"></i> 民宿晚餐</h3>
+                        <p>品尝楠溪江特色美食</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="day-section day-2-bg" id="day2">
+        <div class="day-content">
+            <div class="day-header">
+                <div class="day-number">Day 02</div>
+                <h2 class="day-title">探索日 · 石桅岩 & 龙湾潭</h2>
+                <p class="day-date">2月18日（初二）</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">08:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-coffee"></i> 民宿早餐</h3>
+                        <p>享用当地特色早餐</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">09:00 - 12:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-mountain"></i> 石桅岩景区</h3>
+                        <p>欣赏"浙南天柱"奇观，体验峡谷漂流</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-utensils"></i> 景区附近午餐</h3>
+                        <p>品尝当地农家菜</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">14:30 - 17:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-tree"></i> 龙湾潭国家森林公园</h3>
+                        <p>漫步森林氧吧，观赏多个瀑布群</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">17:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-bed"></i> 入住崖下迷野民宿</h3>
+                        <p>更换住宿，泳池观景亲子房</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="day-section day-3-bg" id="day3">
+        <div class="day-content">
+            <div class="day-header">
+                <div class="day-number">Day 03</div>
+                <h2 class="day-title">穿越日 · 崖下库 → 绍兴</h2>
+                <p class="day-date">2月19日（初三）</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">08:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-coffee"></i> 民宿早餐 & 退房</h3>
+                        <p>出发前往崖下库景区</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">09:00 - 11:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-cliff"></i> 崖下库景区</h3>
+                        <p>探索深谷悬崖，徒步观景</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-road"></i> 出发前往绍兴</h3>
+                        <p>全程245公里，预计3小时</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">15:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-building"></i> 抵达全季酒店</h3>
+                        <p>办理入住，高级大床房</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">16:00 - 19:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-walking"></i> 仓桥直街</h3>
+                        <p>漫步水乡古街，绍兴美食晚餐</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 4 -->
+    <section class="day-section day-4-bg" id="day4">
+        <div class="day-content">
+            <div class="day-header">
+                <div class="day-number">Day 04</div>
+                <h2 class="day-title">文化日 · 绍兴city walk</h2>
+                <p class="day-date">2月20日（初四）</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">08:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-coffee"></i> 酒店早餐</h3>
+                        <p>退房，行李寄存</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">09:00 - 11:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-book"></i> 书圣故里 → 周恩来祖居 → 八字桥</h3>
+                        <p>感受书法文化，瞻仰伟人风范</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:00</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-utensils"></i> 午餐 & 下午茶</h3>
+                        <p>品尝绍兴小吃</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">14:00 - 15:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-feather-alt"></i> 鲁迅故里 → 徐渭故里 & 艺术馆</h3>
+                        <p>从百草园到青藤书屋</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">17:00 - 19:30</div>
+                    <div class="timeline-card">
+                        <h3><i class="fas fa-car"></i> 返程昆山</h3>
+                        <p>全程191公里，预计2.5小时</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <h2>旅途愉快！</h2>
+        <p>2026年春节 · 楠溪江绍兴自驾游 · 4天3晚 · 约862公里</p>
+        <div class="footer-stats">
+            <div class="stat-item">
+                <div class="stat-value">4</div>
+                <div class="stat-label">天数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">3</div>
+                <div class="stat-label">住宿</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">13+</div>
+                <div class="stat-label">景点</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">862km</div>
+                <div class="stat-label">总路程</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Progress indicator
+        const sections = document.querySelectorAll('.hero, .day-section, .footer');
+        const dots = document.querySelectorAll('.progress-dot');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    dots.forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.dataset.target === id) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Click on dots to scroll
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetId = dot.dataset.target;
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Nav bar visibility
+        let lastScrollY = 0;
+        const navBar = document.getElementById('navBar');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 100) {
+                navBar.classList.add('visible');
+            } else {
+                navBar.classList.remove('visible');
+            }
+            lastScrollY = scrollY;
+        });
+
+        // Parallax effect for background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            document.querySelectorAll('.day-section').forEach((section, index) => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                if (scrolled > index * window.innerHeight) {
+                    section.style.backgroundPositionY = `${yPos}px`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
